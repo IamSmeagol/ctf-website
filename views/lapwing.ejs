@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<%- include('./partials/head.ejs') %>
+<body>
+    <p>A court reporter had just started reporting on a case, but his keyboard started acting up and he had no time to fix it.</p>
+    <p>Check <a href=\"/lapwing/log.txt\">log.txt</a> for the details</p>
+    <form id="lapwing-form" action="/lapwing" method  ="POST">
+    <input required type="text" name="lapwing-flag" id="lapwing-flag" placeholder="flag{abc123_def456}"><button id="submit-flag"type="submit">Submit flag</button>
+    </form>
+    <script>
+      console.log("script ran")
+      const flagForm = document.getElementById("lapwing-form")
+      const submitButton = document.getElementById("submit-flag")
+      const lapwingFlag = document.getElementById("lapwing-flag")
+      const regex = /^flag\{.+\}$/
+      flagForm.addEventListener("submit", (e) => {
+        if (!regex.test(lapwingFlag.value)){
+          e.preventDefault()
+          alert("invalid flag")
+        }
+        
+      })
+    </script>
+</body>
+</html>
